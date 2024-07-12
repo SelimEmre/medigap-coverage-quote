@@ -16,18 +16,40 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f8f9fa;
+}
+.header .call-button {
+  color: red;
+  font-weight: bold;
+}
+.note {
+  margin: 20px 0;
+  padding: 10px;
+  background-color: #e9ecef;
+  border-left: 5px solid #007bff;
+}
+.plan-list {
+  margin: 20px 0;
+}
+.footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 10px;
+  background-color: #f8f9fa;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.fixed-top-menu {
+position: sticky;
+  top: 0;
 }
