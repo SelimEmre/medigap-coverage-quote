@@ -21,8 +21,6 @@ export default function ThankYou() {
         fetchQuotes();
     }, []);
 
-    let naics = '';
-
     //let zipCode = ''; // It will come from path 
     //let age = ''; // It will come from path
     let gender = 'F';
@@ -55,7 +53,10 @@ export default function ThankYou() {
             }),
         });
 
+
         const result = await response.json();
+
+        console.log("response: " + (result ));
 
         let messageList: string[] = [];
 

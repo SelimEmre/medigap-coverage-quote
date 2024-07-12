@@ -16,7 +16,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       );
 
       const myHeaders = new Headers();
-      myHeaders.append('x-api-token', tokenRaw?.value_string!); // tokenRaw?.value_string
+      myHeaders.append('x-api-token', tokenRaw?.value_string!);
       const { zip5, age, gender, tobacco, plan, withLimit } = await req.json();
   
       const requestOptions: RequestInit = {
@@ -33,9 +33,12 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         `${process.env
           .NEXT_PUBLIC_MEDIGAP_API_URL!}?zip5=${zip5}&age=${age}&gender=${gender}&tobacco=${tobacco}&plan=${plan}` +
         limitQuery;
+
+        console.log("1. URL: " + url);
   
       let response = await fetch(url, requestOptions);
       if (response.status === 403) {
+
         const postRequestOptions: RequestInit = {
           method: 'POST',
           body: JSON.stringify({
@@ -60,6 +63,8 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         //new Request for quote with a new token
         const newHeader = new Headers();
         newHeader.append('x-api-token', newToken);
+
+        console.log("403 döndü : new token: " + newToken);
   
         const newRequestOptions: RequestInit = {
           method: 'GET',
@@ -74,6 +79,6 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       return NextResponse.json(result);
     } catch (error) {
       console.error(error);
-      return NextResponse.json({ error: 'Error' }, { status: 500 });
+      return NextResponse.json({ error: error }, { status: 500 });
     }
   }
