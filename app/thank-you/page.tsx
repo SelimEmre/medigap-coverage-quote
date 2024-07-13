@@ -25,13 +25,14 @@ export default function ThankYou() {
     //let age = ''; // It will come from path
     let gender = 'F';
     let tobacco = 0;
-    let plan = 'G';
+    //let plan = 'G';
     let withLimit = process.env.NEXT_PUBLIC_QUOTE_LIMIT;
 
     const searchParams = useSearchParams();
 
     const age = searchParams.get('age');
     const zipCode = searchParams.get('zipCode');
+    const plan = searchParams.get('plan');
 
     // En düşük 15 pricing 
 
@@ -48,11 +49,10 @@ export default function ThankYou() {
                 age,
                 gender,
                 tobacco,
-                plan,
+                plan: plan ? plan : "G", // It's default G
                 withLimit,
             }),
         });
-
 
         const result = await response.json();
         let messageList: string[] = [];
@@ -114,44 +114,90 @@ export default function ThankYou() {
 
     return (
 
-<div className="container">
-    <div className="header fixed-top-menu">
-      <div>
-        <img src="/logo.png"></img>
+        <><><div className="header fixed-top-menu">
+            <div className="container-sm">
 
-    </div>
-      <p>A licensed insurance agent will answer your call 24/7</p>
-      <div className="call-button">
-        <p>Click-to-Call:<br/> <a className="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="+1-844-618-0676" >1-844-618-0676</a></p>
-      </div>
-    </div>
+                <div className='float-left'>
+                    <img src="/logo.png"></img>
 
-    <div className="note">
-      <p>To get a detailed quote that includes the carrier name and factors in your specific gender & tobacco-use details, please click-to-call <a className="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="+1-844-618-0676" >1-844-618-0676</a> to speak with a licensed agent 24/7.</p>
-      <p>This can be done over the phone or via email, with no obligation to enroll.</p>
-      <p>While these rates are accurate, regulations prevent us from displaying the names of the carriers online.</p>
-    </div>
+                </div>
 
-    <div className="plan-list">
-      <h2>Here are the lowest-priced top 15 rates for <b>Plan G</b> that you requested. Note that prices may vary based on gender and tobacco usage:</h2>
-      <ul>
-        <li><b>{age}-year-old</b></li>
-        <li><b>Non-tobacco</b></li>
-        <li><b>Female</b></li>
-        <li><b>{zipCode}</b></li>
-      </ul>
 
-      <ol className="mt-4">
-      <ReactMarkdown remarkPlugins={remarkPlugins} className="font-medium">
-      {formattedMessage}
-      </ReactMarkdown>
-      </ol>
-    </div>
+                <div className="click-call bold-text float-right">
+                    <p>Click-to-Call:<br /> <a className="link-text" href="tel:+18446180676">1-844-618-0676</a> <br />TTY: 711</p>
+                </div>
 
-    <div className="footer">
-      <p>Owner: Pollen Insurance Group LLC. Copyright © 2024. All rights reserved. Not connected with or endorsed by the U.S. government or the federal Medicare program.</p>
-      <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Contact Us</a></p>
-    </div>
-  </div>
+                <div className="bold-text float-right middle-text">
+                    <p>A licensed insurance agent will answer your call 24/7</p>
+                </div>
+
+            </div>
+        </div>
+
+
+            <div className="container-sm">
+                <div className="body-text">
+                    <div className="top-container">
+                        <ul>
+                            <li><p className="bold-text">To get a detailed quote that includes the carrier name and factors in your specific gender & tobacco-use details,
+                                please click-to-call <a className="link-text" href="tel:+18446180676">1-844-618-0676</a> to speak with a licensed agent 24/7.</p>
+                                This can be done over the phone or via email, with no obligation to enroll.
+                            </li>
+                            <li>
+                                While these rates are accurate, regulations prevent us from displaying the names of the carriers online.</li>
+                        </ul>
+
+
+                    </div>
+
+                    <div className="plan-list">
+                        <h2>Here are the lowest-priced top 15 rates for <b>Plan {plan ? plan : "G"}</b> that you requested. Note that prices may vary based on gender and tobacco usage:</h2>
+                        <ul>
+                            <li><b>{age}-year-old</b></li>
+                            <li><b>Non-tobacco</b></li>
+                            <li><b>Female</b></li>
+                            <li><b>{zipCode}</b></li>
+                        </ul>
+
+                        <ol className="mt-4">
+                            <ReactMarkdown remarkPlugins={remarkPlugins} className="font-medium">
+                                {formattedMessage}
+                            </ReactMarkdown>
+                        </ol>
+                    </div>
+
+                </div>
+            </div></>
+
+            <div className="footer">
+                <div className="container-sm">
+                    <div className="footer-text">
+                        <p> © Pollen Insurance Group LLC. Copyright 2024. All rights reserved.<br />
+                            Owned by: Pollen Insurance Group LLC. Not connected with or endorsed by the U.S. government or the federal
+                            Medicare program. Invitations to apply for insurance on MedigapCoverage.com are issued by Pollen Insurance
+                            Group LLC and are available only in regions where it is licensed and appointed. Licensing details for Pollen Insurance
+                            Group are available <a target="_blank" href="https://quote.medigapcoverage.com/quote/licensing">here</a>. If you would like to find more information about the Government Medicare program please
+                            visit the Official US Government Site for People with Medicare located at <a href="https://www.medicare.gov/" target='_blank'>www.medicare.gov</a>, 1-800-MEDICARE, or
+                            your local State Health Insurance Program (SHIP) to get information on all of your options.
+                            <br /><br />
+                            This purpose of this communication is intended to solicit insurance. A licensed insurance agent/producer or insurance
+                            company will contact you. Enrollment in a plan may be restricted to specific times of the year unless you qualify for a
+                            special enrollment period or are within your Medicare Initial Election Period.
+                        </p>
+
+                        <p><a target="_blank"  href="https://quote.medigapcoverage.com/privacy-policy">Privacy Policy</a> | 
+                        <a target="_blank"  href="https://quote.medigapcoverage.com/terms-and-conditions">Terms of Service</a> | 
+                        <a target="_blank"  href="https://quote.medigapcoverage.com/quote/contact-us">Contact Us</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div className="footer section-block">
+                <span className="element-text"><a href="tel:+18446180676" target="_blank" className="url-link">Click-to-Contact 1-844-618-0676</a></span>
+            </div>
+
+        </>
+
+
     );
 };

@@ -6,6 +6,7 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --font-family: Arial, Helvetica, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,25 +23,28 @@
   align-items: center;
   padding: 10px;
   background-color: #f8f9fa;
+  box-shadow: 0 -6px 10px 5px rgba(0,0,0,0.5);
 }
+
 .header .call-button {
-  color: red;
+  color: #f14742;
   font-weight: bold;
 }
-.note {
+.top-container {
   margin: 20px 0;
   padding: 10px;
-  background-color: #e9ecef;
-  border-left: 5px solid #007bff;
+  background-color: #f0f3f5;
+  border-color: #a3bac6 1px;
+  border-radius: 25px;
+
 }
 .plan-list {
   margin: 20px 0;
 }
 .footer {
   text-align: center;
-  margin-top: 40px;
   padding: 10px;
-  background-color: #f8f9fa;
+  background-color: #222c69;
 }
 
 @layer utilities {
@@ -53,3 +57,104 @@
 position: sticky;
   top: 0;
 }
+
+.bold-text {
+  font-weight: bold;
+  color: #37465a
+}
+
+.underline-text {
+  text-decoration: underline;
+}
+
+.middle-text{
+  font-size: 16px;
+  line-height: 1.6;
+  width: 200px;
+}
+
+.body-text{
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.footer-text{
+  font-size: 12px;
+  line-height: 1.6;
+  color: white;
+}
+
+.footer-text a:hover{
+  text-decoration: underline;
+}
+
+.float-left{
+  float: left;
+}
+.float-right{
+  float: right;
+}
+
+.link-text{
+  color: #f14742;
+}
+.link-text:hover{
+  text-decoration: underline;
+}
+
+ul {
+  list-style-type: disc !important;
+  padding-left:1em !important;
+  margin-left:1em;
+}
+
+.section-block{
+  background: rgb(240,243,245);
+  height: 50px;
+  text-align: center;
+  position: sticky;
+  bottom: 0;
+}
+
+.element-text{
+    font-size: 0.9907rem;
+    line-height: 1.6rem;
+    color: #196ecf;
+}
+
+.element-text a:hover{
+  text-decoration: underline;
+}
+
+.text-header{
+    text-align: left;
+    line-height: 3.625rem;
+    font-size: 2.2291rem;
+  }
+
+  .click-call{
+    font-size: 24px;
+    line-height: 1.2;
+  }
+  
+
+  @media (max-width: 700px) {
+
+    .click-call{
+      font-size: 16px;
+      line-height: 1.2;
+    }
+
+    .body-text{
+      font-size: 16px;
+      line-height: 1.4;
+    }
+
+    .footer-text{
+      font-size: 12px;
+      line-height: 1.4;
+    } 
+    .middle-text{
+      display: none;
+    }
+  }
