@@ -6,9 +6,6 @@ export const runtime = 'edge';
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
     try {
-      console.log("process.env.NEXT_PUBLIC_SUPABASE_URL!): " + process.env.NEXT_PUBLIC_SUPABASE_URL);
-      console.log("process.env.SUPABASE_SERVICE_ROLE_KEY!): " + process.env.SUPABASE_SERVICE_ROLE_KEY);
-
       //Take values from supabase
       const supabase = createClient(
         process.env.NEXT_PUBLIC_SUPABASE_URL || '',
@@ -24,8 +21,6 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       myHeaders.append('x-api-token', tokenRaw?.value_string!);
       const { zip5, age, gender, tobacco, plan, withLimit } = await req.json();
 
-      console.log("tokenRaw?.value_string!): " + tokenRaw?.value_string!);
-  
       const requestOptions: RequestInit = {
         method: 'GET',
         headers: myHeaders,
@@ -55,10 +50,6 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
           redirect: 'follow'
         };
 
-        console.log("process.env.NEXT_PUBLIC_MEDIGAPI_KEY!): " + process.env.NEXT_PUBLIC_MEDIGAPI_KEY);
-        console.log("process.env.NEXT_PUBLIC_MEDIGAP_AUTH_API_URL!): " + process.env.NEXT_PUBLIC_MEDIGAP_AUTH_API_URL);
-  
-  
         response = await fetch(
           process.env.NEXT_PUBLIC_MEDIGAP_AUTH_API_URL!,
           postRequestOptions
@@ -74,8 +65,6 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         //new Request for quote with a new token
         const newHeader = new Headers();
         newHeader.append('x-api-token', newToken);
-
-        console.error("403 döndü : new token: " + newToken);
   
         const newRequestOptions: RequestInit = {
           method: 'GET',

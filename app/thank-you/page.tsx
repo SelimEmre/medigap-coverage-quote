@@ -55,9 +55,6 @@ export default function ThankYou() {
 
 
         const result = await response.json();
-
-        console.log("response: " + JSON.stringify(result));
-
         let messageList: string[] = [];
 
         var res = JSON.parse(result);
