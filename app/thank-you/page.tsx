@@ -150,7 +150,7 @@ export default function ThankYou() {
                     </div>
 
                     <div className="plan-list">
-                        <p>Here are the lowest-priced top 15 rates for <b>Plan {plan ? plan : "G"}</b> that you requested. Note that prices may vary based on gender and tobacco usage:</p>
+                        <p>Here are the lowest-priced top 15 rates for <b>plan {plan ? plan : "G"}</b> that you requested. Note that prices may vary based on gender and tobacco usage:</p>
                         <ul>
                             <li><b>{age}-year-old</b></li>
                             <li><b>Non-tobacco</b></li>
@@ -192,7 +192,7 @@ export default function ThankYou() {
             </div>
 
             <div className="footer section-block">
-                <span className="element-text"><a href="tel:+18446180676" target="_blank" className="url-link">Click-to-Contact 1-844-618-0676</a></span>
+                <span  className="bold-text element-text"><a href="tel:+18446180676" target="_blank" className="url-link">Click-to-Contact 1-844-618-0676</a></span>
             </div>
 
         </>
