@@ -19,6 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+      <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
      <GoogleTagManager gtmId="GTM-TMRT9RZ" />
       </head>
       <body className={inter.className}>{children}</body>

@@ -90,6 +90,7 @@ position: sticky;
 
 .float-left{
   float: left;
+  width: 225px;
 }
 .float-right{
   float: right;
@@ -157,4 +158,9 @@ ul {
     .middle-text{
       display: none;
     }
+
+    .float-left{
+      width: 150px;
+    }
+
   }

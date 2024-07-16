@@ -118,7 +118,7 @@ export default function ThankYou() {
             <div className="container-sm">
 
                 <div className='float-left'>
-                    <img src="/logo.png"></img>
+                    <img src="/logo.svg"></img>
 
                 </div>
 
@@ -141,7 +141,6 @@ export default function ThankYou() {
                         <ul>
                             <li><p className="bold-text">To get a detailed quote that includes the carrier name and factors in your specific gender & tobacco-use details,
                                 please click-to-call <a className="link-text" href="tel:+18446180676">1-844-618-0676</a> to speak with a licensed agent 24/7.</p>
-                                This can be done over the phone or via email, with no obligation to enroll.
                             </li>
                             <li>
                                 While these rates are accurate, regulations prevent us from displaying the names of the carriers online.</li>
@@ -151,7 +150,7 @@ export default function ThankYou() {
                     </div>
 
                     <div className="plan-list">
-                        <h2>Here are the lowest-priced top 15 rates for <b>Plan {plan ? plan : "G"}</b> that you requested. Note that prices may vary based on gender and tobacco usage:</h2>
+                        <p>Here are the lowest-priced top 15 rates for <b>Plan {plan ? plan : "G"}</b> that you requested. Note that prices may vary based on gender and tobacco usage:</p>
                         <ul>
                             <li><b>{age}-year-old</b></li>
                             <li><b>Non-tobacco</b></li>
