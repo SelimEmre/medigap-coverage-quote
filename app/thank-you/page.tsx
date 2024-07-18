@@ -184,9 +184,9 @@ export default function ThankYou() {
                             special enrollment period or are within your Medicare Initial Election Period.
                         </p>
 
-                        <p><a target="_blank"  href="https://quote.medigapcoverage.com/privacy-policy">Privacy Policy</a> | 
-                        <a target="_blank"  href="https://quote.medigapcoverage.com/terms-and-conditions">Terms of Service</a> | 
-                        <a target="_blank"  href="https://quote.medigapcoverage.com/quote/contact-us">Contact Us</a></p>
+                        <p><a className="text-padding" target="_blank"  href="https://quote.medigapcoverage.com/privacy-policy">Privacy Policy</a>  |  
+                         <a className="text-padding" target="_blank"  href="https://quote.medigapcoverage.com/terms-and-conditions">Terms of Service</a>  |  
+                         <a className="text-padding" target="_blank"  href="https://quote.medigapcoverage.com/quote/contact-us">Contact Us</a></p>
                     </div>
                 </div>
             </div>

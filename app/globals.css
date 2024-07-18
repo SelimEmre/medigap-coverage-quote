@@ -84,6 +84,11 @@ position: sticky;
   color: white;
 }
 
+.footer-text a{
+  color: white;
+  text-decoration: none;
+}
+
 .footer-text a:hover{
   text-decoration: underline;
 }
@@ -163,4 +168,8 @@ ul {
       width: 150px;
     }
 
+  }
+
+  .text-padding{
+    padding-left: 0.25em;
   }
