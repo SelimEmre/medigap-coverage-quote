@@ -33,11 +33,9 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   
         const url =
         `${process.env
-          .NEXT_PUBLIC_MEDIGAP_API_URL!}?zip5=${zip5}&age=${age}&gender=${gender}&tobacco=${tobacco}&plan=${plan}` +
+          .NEXT_PUBLIC_MEDIGAP_API_URL!}?zip5=${zip5}&age=${age}&gender=${gender}&tobacco=${tobacco}&plan=${plan}&select=0` +
         limitQuery;
 
-        console.error("1. URL: " + url);
-  
       let response = await fetch(url, requestOptions);
       if (response.status === 403) {
 
