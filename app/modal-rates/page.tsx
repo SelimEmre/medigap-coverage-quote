@@ -99,10 +99,13 @@ export default function ThankYou() {
         } else {
             messageList.push('No quote found for your NAICs');
         }
+        const maxLines = Number(process.env.NEXT_PUBLIC_QUOTE_LIMIT) || 15;
 
         const numeratedMessage = messageList
-            .map((message: string, index: number) => `  ${index + 1}- ${message}\n`)
-            .join('');
+            .slice(0, maxLines)
+            .map((message: string, index: number) => ` ${index + 1}- ${message}\n`)
+            .join('') +
+            (messageList.length > maxLines ? '' : '');
 
         setFormattedMessage(`${numeratedMessage}`);
 

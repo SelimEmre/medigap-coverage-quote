@@ -27,14 +27,9 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         redirect: 'follow',
       };
   
-      const limitQuery = withLimit
-      ? `&offset=0&limit=${process.env.NEXT_PUBLIC_QUOTE_LIMIT || 15}`
-      : '';
-  
         const url =
         `${process.env
-          .NEXT_PUBLIC_MEDIGAP_API_URL!}?zip5=${zip5}&age=${age}&gender=${gender}&tobacco=${tobacco}&plan=${plan}&select=0` +
-        limitQuery;
+          .NEXT_PUBLIC_MEDIGAP_API_URL!}?zip5=${zip5}&age=${age}&gender=${gender}&tobacco=${tobacco}&plan=${plan}&select=0&offset=0&limit=30`;
 
       let response = await fetch(url, requestOptions);
       if (response.status === 403) {

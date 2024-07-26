@@ -25,7 +25,7 @@ export default function ThankYou() {
     //let age = ''; // It will come from path
     let gender = 'F';
     let tobacco = 0;
-    //let plan = 'G';
+    //let plan = 'G'; // It will come from path
     let withLimit = process.env.NEXT_PUBLIC_QUOTE_LIMIT;
 
     const searchParams = useSearchParams();
@@ -93,16 +93,19 @@ export default function ThankYou() {
                         ? `, rate increase: ${rateIncreaseMessage.join(', ')}`
                         : ''
                     }`;
-
                 messageList.push(message);
             });
         } else {
             messageList.push('No quote found for your NAICs');
         }
 
+        const maxLines = Number(process.env.NEXT_PUBLIC_QUOTE_LIMIT) || 15;
+
         const numeratedMessage = messageList
-            .map((message: string, index: number) => `  ${index + 1}- ${message}\n`)
-            .join('');
+            .slice(0, maxLines)
+            .map((message: string, index: number) => ` ${index + 1}- ${message}\n`)
+            .join('') +
+            (messageList.length > maxLines ? '' : '');
 
         setFormattedMessage(`${numeratedMessage}`);
 
@@ -184,15 +187,15 @@ export default function ThankYou() {
                             special enrollment period or are within your Medicare Initial Election Period.
                         </p>
 
-                        <p><a className="text-padding" target="_blank"  href="https://quote.medigapcoverage.com/privacy-policy">Privacy Policy</a>  |  
-                         <a className="text-padding" target="_blank"  href="https://quote.medigapcoverage.com/terms-and-conditions">Terms of Service</a>  |  
-                         <a className="text-padding" target="_blank"  href="https://quote.medigapcoverage.com/quote/contact-us">Contact Us</a></p>
+                        <p><a className="text-padding" target="_blank" href="https://quote.medigapcoverage.com/privacy-policy">Privacy Policy</a>  |
+                            <a className="text-padding" target="_blank" href="https://quote.medigapcoverage.com/terms-and-conditions">Terms of Service</a>  |
+                            <a className="text-padding" target="_blank" href="https://quote.medigapcoverage.com/quote/contact-us">Contact Us</a></p>
                     </div>
                 </div>
             </div>
 
             <div className="footer section-block">
-                <span  className="bold-text element-text"><a href="tel:+18446180676" target="_blank" className="url-link">Click-to-Contact 1-844-618-0676</a></span>
+                <span className="bold-text element-text"><a href="tel:+18446180676" target="_blank" className="url-link">Click-to-Contact 1-844-618-0676</a></span>
             </div>
 
         </>
